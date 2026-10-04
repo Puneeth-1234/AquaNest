@@ -1,0 +1,34 @@
+# Dependency directories
+node_modules/
+
+# Environment files
+.env
+.env.*
+!.env.example
+*.env
+*.env.local
+*.env.production
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Runtime data & temporary files
+pids/
+*.pid
+*.seed
+*.pid.lock
+*.tmp
+*.temp
+
+# OS metadata & Editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+*.swo
+*~

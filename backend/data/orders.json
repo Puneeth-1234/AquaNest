@@ -1,0 +1,60 @@
+[
+  {
+    "id": "ORD-9421",
+    "customer": {
+      "fullName": "Rahul Verma",
+      "phone": "9876543210",
+      "email": "rahul.verma@example.com",
+      "address": "Flat 402, Coral Heights, Indiranagar",
+      "city": "Bengaluru",
+      "state": "Karnataka",
+      "pincode": "560038"
+    },
+    "items": [
+      {
+        "productId": "betta-halfmoon-blue",
+        "name": "Royal Blue Halfmoon Betta",
+        "price": 649,
+        "quantity": 1,
+        "image": "images/betta-halfmoon-blue.jpg"
+      }
+    ],
+    "subtotal": 649,
+    "deliveryCharge": 0,
+    "discount": 64,
+    "totalAmount": 585,
+    "paymentMethod": "Cash on Delivery",
+    "orderDate": "2026-10-02T10:30:00.000Z",
+    "status": "Shipped",
+    "estimatedDelivery": "24-48 Hours"
+  },
+  {
+    "id": "ORD-8812",
+    "customer": {
+      "fullName": "Priya Nair",
+      "phone": "9123456789",
+      "email": "priya.nair@example.com",
+      "address": "Villa 12, Palm Meadows, Whitefield",
+      "city": "Bengaluru",
+      "state": "Karnataka",
+      "pincode": "560066"
+    },
+    "items": [
+      {
+        "productId": "goldfish-redcap",
+        "name": "Red Cap Oranda Goldfish",
+        "price": 799,
+        "quantity": 2,
+        "image": "images/goldfish-redcap.jpg"
+      }
+    ],
+    "subtotal": 1598,
+    "deliveryCharge": 0,
+    "discount": 0,
+    "totalAmount": 1598,
+    "paymentMethod": "UPI",
+    "orderDate": "2026-10-03T14:15:00.000Z",
+    "status": "Confirmed",
+    "estimatedDelivery": "24-48 Hours"
+  }
+]

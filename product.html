@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Species Details | AquaNest</title>
+  <meta name="description" content="View detailed care requirements, water chemistry parameters, and temperament for ornamental aquarium fish on AquaNest.">
+  <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Plus Jakarta Sans', -apple-system, sans-serif; }
+  </style>
+</head>
+<body>
+  <div id="product-page-marker"></div>
+
+  <!-- Top Announcement Bar -->
+  <div class="top-bar">
+    <div class="container">
+      <div class="top-bar-item">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        <span>100% Live Arrival Guarantee with Temperature Controlled Travel Pods</span>
+      </div>
+      <div class="top-bar-item">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+        <span>Free Shipping on Orders above ₹999</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container">
+      <nav class="navbar" aria-label="Main Navigation">
+        <a href="index.html" class="brand-logo">
+          <div class="brand-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+              <path d="M2 16s4-3 10-3 10 3 10 3-4-8-10-8-10 8-10 8z"></path>
+              <circle cx="12" cy="13" r="1.5"></circle>
+            </svg>
+          </div>
+          <span class="brand-text">Aqua<span>Nest</span></span>
+        </a>
+
+        <ul class="nav-menu">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="shop.html" class="nav-link active">Shop</a></li>
+          <li><a href="index.html#featured-categories" class="nav-link">Categories</a></li>
+          <li><a href="index.html#aquarium-care" class="nav-link">About & Care</a></li>
+          <li><a href="contact.html" class="nav-link">Contact</a></li>
+        </ul>
+
+        <div class="nav-actions">
+          <a href="shop.html" class="action-btn" title="Search Fish" aria-label="Search Catalog">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+          </a>
+
+          <a href="shop.html?wishlist=true" class="action-btn" title="View Wishlist" aria-label="Wishlist">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+            </svg>
+            <span class="badge-count wishlist-count-badge" style="display: none;">0</span>
+          </a>
+
+          <a href="cart.html" class="action-btn" title="Shopping Cart" aria-label="Shopping Cart">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="9" cy="21" r="1"></circle>
+              <circle cx="20" cy="21" r="1"></circle>
+              <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+            </svg>
+            <span class="badge-count cart-count-badge" style="display: none;">0</span>
+          </a>
+
+          <button class="mobile-toggle" aria-label="Toggle Navigation Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+      </nav>
+    </div>
+
+    <!-- Mobile Drawer -->
+    <div class="mobile-nav-drawer">
+      <a href="index.html" class="mobile-nav-link">Home</a>
+      <a href="shop.html" class="mobile-nav-link active">Shop Catalog</a>
+      <a href="index.html#featured-categories" class="mobile-nav-link">Fish Categories</a>
+      <a href="index.html#aquarium-care" class="mobile-nav-link">Aquarium Care Guide</a>
+      <a href="contact.html" class="mobile-nav-link">Contact & Support</a>
+      <a href="cart.html" class="mobile-nav-link">Shopping Cart</a>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- Breadcrumbs: Home > Shop > Category > Product Name -->
+    <nav class="breadcrumbs" aria-label="Breadcrumb Navigation">
+      <a href="index.html">Home</a>
+      <span class="breadcrumb-separator">&gt;</span>
+      <a href="shop.html">Shop</a>
+      <span class="breadcrumb-separator">&gt;</span>
+      <span id="detail-breadcrumb-cat-wrap">
+        <a href="shop.html" id="detail-breadcrumb-cat">Category</a>
+        <span class="breadcrumb-separator">&gt;</span>
+      </span>
+      <span id="detail-breadcrumb-name" class="breadcrumb-current" aria-current="page">Fish Name</span>
+    </nav>
+
+    <!-- Product Detail Layout Grid -->
+    <div class="product-detail-grid">
+      <!-- Left Column: Gallery & Trust Badges -->
+      <div class="product-gallery">
+        <div class="main-image-frame">
+          <div class="detail-img-badges">
+            <span id="detail-discount-badge" class="badge badge-discount" style="display: none;">20% OFF</span>
+            <span id="detail-tag-badge" class="badge badge-bestseller" style="display: none;">Bestseller</span>
+            <span id="detail-stockout-badge" class="badge badge-stockout" style="display: none;">Sold Out</span>
+          </div>
+          <img id="detail-product-img" src="" alt="Aquarium Fish Specimen" loading="eager">
+        </div>
+
+        <!-- Trust Features Strip -->
+        <div class="detail-trust-strip">
+          <div class="trust-item">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            </svg>
+            <div>
+              <strong>100% Live Arrival</strong>
+              <span>Insulated oxygen travel pods</span>
+            </div>
+          </div>
+          <div class="trust-item">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"></circle>
+              <polyline points="12 6 12 12 14 14"></polyline>
+            </svg>
+            <div>
+              <strong>14-Day Quarantine</strong>
+              <span>Medical health certified</span>
+            </div>
+          </div>
+          <div class="trust-item">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+            </svg>
+            <div>
+              <strong>Express Priority Air</strong>
+              <span>24–48h Doorstep delivery</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column: Purchase Info & Actions -->
+      <div class="product-summary">
+        <div class="detail-header">
+          <a href="shop.html" id="detail-category" class="product-category-link">Category</a>
+          <h1 id="detail-name" class="detail-title">Ornamental Fish</h1>
+          <div id="detail-scientific" class="detail-scientific">Scientific name</div>
+          
+          <div class="product-rating-row">
+            <div class="product-rating">
+              <span class="stars">★★★★★</span>
+              <span id="detail-rating-num" class="rating-num">4.9</span>
+              <span id="detail-reviews-count" class="rating-count">(42 verified reviews)</span>
+            </div>
+            <!-- Stock Status Pill -->
+            <div id="detail-stock-status" class="stock-status in-stock">
+              <span class="stock-dot"></span>
+              <span id="detail-stock-text">In Stock & Ready to Ship</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Price Display Box with Discount Calculation -->
+        <div class="detail-price-box">
+          <div class="price-current-wrap">
+            <span id="detail-price" class="detail-price">₹0</span>
+            <span id="detail-old-price" class="detail-old-price"></span>
+          </div>
+          <span id="detail-price-discount-tag" class="detail-discount-tag" style="display: none;">Save 20%</span>
+        </div>
+
+        <!-- Short Description -->
+        <div class="detail-short-desc-wrap">
+          <p id="detail-short-description" class="detail-short-desc">
+            Vibrant, healthy ornamental aquarium specimen bred for exquisite color and tranquil temperament.
+          </p>
+        </div>
+
+        <!-- Purchase & Quantity Action Row -->
+        <div class="detail-purchase-box">
+          <div class="detail-qty-row">
+            <label class="qty-label" for="detail-qty-input">Quantity:</label>
+            <div class="qty-control" id="detail-qty-control">
+              <button type="button" class="qty-btn" id="detail-qty-decrease" aria-label="Decrease quantity">&minus;</button>
+              <input type="number" id="detail-qty-input" class="qty-input" value="1" min="1" max="50" readonly aria-label="Selected quantity">
+              <button type="button" class="qty-btn" id="detail-qty-increase" aria-label="Increase quantity">&plus;</button>
+            </div>
+            <span id="detail-stock-count-hint" class="stock-hint">12 left in stock</span>
+          </div>
+
+          <!-- Action Buttons: Add to Cart, Buy Now, Wishlist -->
+          <div class="detail-actions-row">
+            <button type="button" id="detail-add-cart-btn" class="btn btn-primary detail-cart-btn">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="9" cy="21" r="1"></circle>
+                <circle cx="20" cy="21" r="1"></circle>
+                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+              </svg>
+              <span>Add to Cart</span>
+            </button>
+
+            <button type="button" id="detail-buy-now-btn" class="btn btn-buy-now">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+              </svg>
+              <span>Buy Now</span>
+            </button>
+
+            <button type="button" id="detail-wishlist-btn" class="product-wishlist-btn detail-wishlist-btn" title="Add to Wishlist" aria-label="Save to Wishlist">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Live Arrival Assurance Callout -->
+        <div class="guarantee-callout">
+          <div class="guarantee-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            </svg>
+          </div>
+          <div>
+            <div style="font-weight: 700; color: var(--white); font-size: 0.95rem;">100% Live Arrival & Health Warranty</div>
+            <div style="font-size: 0.82rem; color: var(--slate-300); margin-top: 0.2rem; line-height: 1.5;">
+              Delivered in specialized medical-grade pure oxygen bags with climate heat/cold packs. 2-hour photo claims process for instant replacement or refund.
+            </div>
+          </div>
+        </div>
+
+        <!-- Quick Spec Highlights Badges -->
+        <div class="quick-highlights">
+          <div class="highlight-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--emerald-400)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>Certified captive bred specimen</span>
+          </div>
+          <div class="highlight-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--emerald-400)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>Free shipping on orders above ₹999</span>
+          </div>
+          <div class="highlight-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--emerald-400)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>Cash on Delivery (COD) available</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Aquarium Care Information Section -->
+    <section class="care-section-container" aria-label="Aquarium Care Information">
+      <div class="care-section-header">
+        <span class="section-subtitle">Husbandry & Habitat</span>
+        <h2 class="section-title">Aquarium Care & Water Chemistry</h2>
+        <p class="section-desc">Recommended environmental parameters to maintain peak coloration, vitality, and longevity.</p>
+      </div>
+
+      <div class="care-specs-grid">
+        <!-- 1. Recommended Tank Size -->
+        <div class="care-card-item">
+          <div class="care-card-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="2" y="5" width="20" height="14" rx="2"></rect>
+              <line x1="2" y1="10" x2="22" y2="10"></line>
+            </svg>
+          </div>
+          <div class="care-card-body">
+            <span class="care-card-label">Recommended Tank Size</span>
+            <span class="care-card-value" id="spec-tank">15 Gallons</span>
+          </div>
+        </div>
+
+        <!-- 2. Water Temperature -->
+        <div class="care-card-item">
+          <div class="care-card-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path>
+            </svg>
+          </div>
+          <div class="care-card-body">
+            <span class="care-card-label">Water Temperature</span>
+            <span class="care-card-value" id="spec-temp">22°C – 28°C</span>
+          </div>
+        </div>
+
+        <!-- 3. pH Range -->
+        <div class="care-card-item">
+          <div class="care-card-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path>
+            </svg>
+          </div>
+          <div class="care-card-body">
+            <span class="care-card-label">Ideal pH Range</span>
+            <span class="care-card-value" id="spec-ph">6.5 – 7.5</span>
+          </div>
+        </div>
+
+        <!-- 4. Care Level -->
+        <div class="care-card-item">
+          <div class="care-card-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            </svg>
+          </div>
+          <div class="care-card-body">
+            <span class="care-card-label">Care Difficulty</span>
+            <span class="care-card-value" id="spec-care">Beginner Friendly</span>
+          </div>
+        </div>
+
+        <!-- 5. Dietary Needs -->
+        <div class="care-card-item care-card-wide">
+          <div class="care-card-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"></circle>
+              <path d="M8 12h8"></path>
+              <path d="M12 8v8"></path>
+            </svg>
+          </div>
+          <div class="care-card-body">
+            <span class="care-card-label">Dietary Preference</span>
+            <span class="care-card-value" id="spec-diet">High protein sinking pellets, freeze-dried bloodworms</span>
+          </div>
+        </div>
+
+        <!-- 6. Expected Adult Size -->
+        <div class="care-card-item">
+          <div class="care-card-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="2" y1="12" x2="22" y2="12"></line>
+              <line x1="2" y1="7" x2="2" y2="17"></line>
+              <line x1="22" y1="7" x2="22" y2="17"></line>
+            </svg>
+          </div>
+          <div class="care-card-body">
+            <span class="care-card-label">Expected Adult Size</span>
+            <span class="care-card-value" id="spec-size">2 – 3 inches</span>
+          </div>
+        </div>
+
+        <!-- 7. Average Lifespan -->
+        <div class="care-card-item">
+          <div class="care-card-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"></circle>
+              <polyline points="12 6 12 12 16 14"></polyline>
+            </svg>
+          </div>
+          <div class="care-card-body">
+            <span class="care-card-label">Average Lifespan</span>
+            <span class="care-card-value" id="spec-lifespan">3 – 5 Years</span>
+          </div>
+        </div>
+
+        <!-- 8. Temperament & Behavior -->
+        <div class="care-card-item care-card-wide">
+          <div class="care-card-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+            </svg>
+          </div>
+          <div class="care-card-body">
+            <span class="care-card-label">Social Temperament</span>
+            <span class="care-card-value" id="spec-temperament">Peaceful Community</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Full Description Section -->
+    <section class="description-section-container">
+      <div class="full-desc-card">
+        <h3 class="full-desc-title">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="12" y1="16" x2="12" y2="12"></line>
+            <line x1="12" y1="8" x2="12.01" y2="8"></line>
+          </svg>
+          <span>Species Overview & Natural Behavior</span>
+        </h3>
+        <div id="detail-full-description" class="full-desc-content">
+          Detailed product description will load here dynamically.
+        </div>
+      </div>
+    </section>
+
+    <!-- You May Also Like Section (Related Fish) -->
+    <section class="products-section you-may-also-like-section">
+      <div class="section-header" style="text-align: left; margin-bottom: 2rem;">
+        <span class="section-subtitle">Recommended Tank Mates</span>
+        <h2 class="section-title">You May Also Like</h2>
+        <p class="section-desc">Hand-picked compatible species that flourish in similar aquarium habitats.</p>
+      </div>
+      <div class="products-grid" id="related-products-grid">
+        <!-- Populated dynamically by script.js -->
+      </div>
+    </section>
+  </main>
+
+  <!-- Global Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <a href="index.html" class="brand-logo">
+            <div class="brand-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                <path d="M2 16s4-3 10-3 10 3 10 3-4-8-10-8-10 8-10 8z"></path>
+                <circle cx="12" cy="13" r="1.5"></circle>
+              </svg>
+            </div>
+            <span class="brand-text">Aqua<span>Nest</span></span>
+          </a>
+          <p class="footer-brand-desc">
+            AquaNest brings the wonder of aquatic life into Indian homes with guaranteed healthy livestock and expert aquascaping guidance.
+          </p>
+        </div>
+
+        <div>
+          <h4 class="footer-heading">Shop Navigation</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="shop.html">All Fish</a></li>
+            <li><a href="cart.html">View Cart</a></li>
+            <li><a href="checkout.html">Checkout</a></li>
+            <li><a href="admin.html" style="color: var(--cyan-400);">Admin Portal</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-heading">Support</h4>
+          <ul class="footer-links">
+            <li><a href="contact.html">Contact Us</a></li>
+            <li><a href="contact.html#faqs">Acclimatization FAQs</a></li>
+            <li><a href="index.html#aquarium-care">Water Care Guide</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-heading">Live Arrival Assurance</h4>
+          <p style="font-size: 0.88rem; color: var(--slate-300);">
+            Have queries before introducing this fish to your community? Chat with our aquatic biologist on WhatsApp: <strong>+91 98765 43210</strong>
+          </p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>&copy; 2026 AquaNest Aquatic Technologies Pvt. Ltd. All rights reserved.</div>
+        <div class="payment-badges">
+          <span class="pay-badge">UPI / GPay</span>
+          <span class="pay-badge">PhonePe</span>
+          <span class="pay-badge">Net Banking</span>
+          <span class="pay-badge">COD Available</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/config.js"></script>
+  <script src="js/products.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/script.js"></script>
+</body>
+</html>

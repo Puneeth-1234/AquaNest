@@ -1,0 +1,970 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard | AquaNest Aquatic Management</title>
+  <meta name="description" content="AquaNest administrative management panel for ornamental aquarium livestock, inventory, orders, and sales analytics.">
+  <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/admin.css">
+</head>
+<body class="admin-body">
+  <div class="admin-wrapper">
+    <!-- ========================================================================
+         SIDEBAR NAVIGATION
+         ======================================================================== -->
+    <aside class="admin-sidebar" id="admin-sidebar">
+      <div class="sidebar-header">
+        <a href="index.html" class="admin-brand" title="AquaNest Store Front">
+          <div class="admin-brand-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+              <path d="M2 16s4-3 10-3 10 3 10 3-4-8-10-8-10 8-10 8z"></path>
+              <circle cx="12" cy="13" r="1.5"></circle>
+            </svg>
+          </div>
+          <div class="admin-brand-text">
+            <span>Aqua<span>Nest</span></span>
+            <small class="admin-tag">Admin</small>
+          </div>
+        </a>
+        <button class="sidebar-close-btn" id="sidebar-close-btn" aria-label="Close Sidebar">&times;</button>
+      </div>
+
+      <nav class="sidebar-nav">
+        <div class="nav-section-label">Core Management</div>
+        <ul class="nav-list">
+          <li>
+            <button class="nav-item active" data-target="dashboard">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+              <span>Dashboard</span>
+            </button>
+          </li>
+          <li>
+            <button class="nav-item" data-target="products">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 16s4-3 10-3 10 3 10 3-4-8-10-8-10 8-10 8z"></path><circle cx="12" cy="13" r="1.5"></circle></svg>
+              <span>Products</span>
+              <span class="nav-badge" id="sidebar-products-count">20</span>
+            </button>
+          </li>
+          <li>
+            <button class="nav-item" data-target="orders">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+              <span>Orders</span>
+              <span class="nav-badge nav-badge-orders" id="sidebar-orders-count">0</span>
+            </button>
+          </li>
+          <li>
+            <button class="nav-item" data-target="lowstock">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+              <span>Low Stock</span>
+              <span class="nav-badge nav-badge-warning" id="sidebar-lowstock-count">0</span>
+            </button>
+          </li>
+          <li>
+            <button class="nav-item" data-target="sales">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+              <span>Sales Analytics</span>
+            </button>
+          </li>
+        </ul>
+
+        <div class="nav-section-label">Operations</div>
+        <ul class="nav-list">
+          <li>
+            <button class="nav-item" data-target="customers">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+              <span>Customers</span>
+              <span class="nav-pill-soon">Soon</span>
+            </button>
+          </li>
+          <li>
+            <button class="nav-item" data-target="settings">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+              <span>Settings</span>
+            </button>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="sidebar-footer">
+        <a href="index.html" class="back-to-store-btn" title="View Customer Storefront">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+          <span>Back to Store</span>
+        </a>
+        <div class="admin-user-card" id="admin-user-card">
+          <div class="admin-avatar" id="admin-avatar">AQ</div>
+          <div class="admin-meta">
+            <span class="admin-name" id="admin-profile-name">AquaNest Admin</span>
+            <span class="admin-role" id="admin-profile-role">admin@aquanest.com</span>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Sidebar Backdrop on Mobile -->
+    <div class="sidebar-backdrop" id="sidebar-backdrop"></div>
+
+    <!-- ========================================================================
+         MAIN CONTENT AREA
+         ======================================================================== -->
+    <div class="admin-main">
+      <!-- Top Header Bar -->
+      <header class="admin-topbar">
+        <div class="topbar-left">
+          <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle Navigation">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+          <div class="topbar-title-wrap">
+            <h1 class="topbar-title" id="topbar-title">Dashboard Overview</h1>
+            <span class="topbar-breadcrumb" id="topbar-breadcrumb">AquaNest Admin &bull; Real-time Management</span>
+          </div>
+        </div>
+
+        <div class="topbar-right">
+          <div class="status-indicator-pill" title="Live sync connected">
+            <span class="pulse-dot"></span>
+            <span>Live Catalog Sync</span>
+          </div>
+
+          <button class="btn btn-primary btn-sm" id="btn-quick-add-product">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+            <span>Add Fish</span>
+          </button>
+
+          <a href="shop.html" class="btn btn-outline btn-sm" target="_blank" title="Preview Live Shop">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+            <span>Live Store</span>
+          </a>
+
+          <button class="btn btn-outline btn-sm" id="btn-admin-logout" title="Sign Out of Administrator Console" style="border-color: rgba(239, 68, 68, 0.4); color: #fca5a5;">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+            <span>Sign Out</span>
+          </button>
+        </div>
+      </header>
+
+      <!-- Main Workspace Scroll Area -->
+      <main class="admin-content">
+        <!-- ==================================================================
+             SECTION 1: DASHBOARD OVERVIEW
+             ================================================================== -->
+        <section class="admin-section active" id="section-dashboard">
+          <!-- 6 Key Metric Cards -->
+          <div class="metrics-grid">
+            <!-- Total Products -->
+            <div class="metric-card">
+              <div class="metric-icon metric-icon-cyan">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 16s4-3 10-3 10 3 10 3-4-8-10-8-10 8-10 8z"></path><circle cx="12" cy="13" r="1.5"></circle></svg>
+              </div>
+              <div class="metric-info">
+                <span class="metric-label">Total Products</span>
+                <strong class="metric-value" id="dash-total-products">0</strong>
+                <span class="metric-sub" id="dash-categories-count">7 Fish Categories</span>
+              </div>
+            </div>
+
+            <!-- In Stock -->
+            <div class="metric-card">
+              <div class="metric-icon metric-icon-emerald">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              </div>
+              <div class="metric-info">
+                <span class="metric-label">In Stock</span>
+                <strong class="metric-value text-emerald" id="dash-in-stock">0</strong>
+                <span class="metric-sub">Ready for live dispatch</span>
+              </div>
+            </div>
+
+            <!-- Out of Stock -->
+            <div class="metric-card">
+              <div class="metric-icon metric-icon-coral">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>
+              </div>
+              <div class="metric-info">
+                <span class="metric-label">Out of Stock</span>
+                <strong class="metric-value text-coral" id="dash-out-stock">0</strong>
+                <span class="metric-sub">Sold out specimens</span>
+              </div>
+            </div>
+
+            <!-- Low Stock -->
+            <div class="metric-card metric-card-interactive" id="dash-card-lowstock" title="Click to view Low Stock items">
+              <div class="metric-icon metric-icon-amber">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+              </div>
+              <div class="metric-info">
+                <span class="metric-label">Low Stock (&lt; 5)</span>
+                <strong class="metric-value text-amber" id="dash-low-stock">0</strong>
+                <span class="metric-sub">Needs replenishment &rarr;</span>
+              </div>
+            </div>
+
+            <!-- Total Orders -->
+            <div class="metric-card">
+              <div class="metric-icon metric-icon-blue">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+              </div>
+              <div class="metric-info">
+                <span class="metric-label">Total Orders</span>
+                <strong class="metric-value" id="dash-total-orders">0</strong>
+                <span class="metric-sub" id="dash-confirmed-orders">0 Confirmed / Active</span>
+              </div>
+            </div>
+
+            <!-- Total Revenue -->
+            <div class="metric-card">
+              <div class="metric-icon metric-icon-purple">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+              </div>
+              <div class="metric-info">
+                <span class="metric-label">Total Revenue</span>
+                <strong class="metric-value text-cyan" id="dash-total-revenue">₹0</strong>
+                <span class="metric-sub" id="dash-avg-order-sub">AOV: ₹0</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Mid Section: Sales Chart & Best Sellers -->
+          <div class="dash-grid-2">
+            <!-- Vanilla JS/CSS Sales Chart -->
+            <div class="admin-card">
+              <div class="card-header">
+                <div>
+                  <h2 class="card-title">Sales by Category</h2>
+                  <p class="card-subtitle">Live turnover distribution across fish species</p>
+                </div>
+                <div class="chart-badge" id="chart-total-sales-badge">₹0 Total</div>
+              </div>
+              <div class="card-body">
+                <div class="sales-chart-wrapper" id="dash-sales-chart-container">
+                  <!-- Rendered dynamically by admin.js -->
+                </div>
+              </div>
+            </div>
+
+            <!-- Best Selling Products -->
+            <div class="admin-card">
+              <div class="card-header">
+                <div>
+                  <h2 class="card-title">Best-Selling Fish</h2>
+                  <p class="card-subtitle">Top customer favorites by volume</p>
+                </div>
+                <button class="card-action-link" data-jump="products">View Catalog &rarr;</button>
+              </div>
+              <div class="card-body">
+                <div class="bestsellers-list" id="dash-bestsellers-list">
+                  <!-- Rendered dynamically -->
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bottom Section: Recent Orders & Quick Low Stock -->
+          <div class="dash-grid-2" style="margin-top: 1.5rem;">
+            <!-- Recent Orders Preview -->
+            <div class="admin-card">
+              <div class="card-header">
+                <div>
+                  <h2 class="card-title">Recent Customer Orders</h2>
+                  <p class="card-subtitle">Latest live fish shipments booked</p>
+                </div>
+                <button class="card-action-link" data-jump="orders">All Orders &rarr;</button>
+              </div>
+              <div class="card-body" style="padding: 0;">
+                <div class="table-responsive">
+                  <table class="admin-table">
+                    <thead>
+                      <tr>
+                        <th>Order ID</th>
+                        <th>Customer</th>
+                        <th>Amount</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                      </tr>
+                    </thead>
+                    <tbody id="dash-recent-orders-tbody">
+                      <!-- Rendered dynamically -->
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+            <!-- Low Stock Warnings Preview -->
+            <div class="admin-card">
+              <div class="card-header">
+                <div>
+                  <h2 class="card-title">Low Stock Alerts (&lt; 5)</h2>
+                  <p class="card-subtitle">Action required to avoid stockouts</p>
+                </div>
+                <button class="card-action-link" data-jump="lowstock">Manage Restock &rarr;</button>
+              </div>
+              <div class="card-body" style="padding: 0;">
+                <div class="table-responsive">
+                  <table class="admin-table">
+                    <thead>
+                      <tr>
+                        <th>Fish Specimen</th>
+                        <th>Stock</th>
+                        <th>Price</th>
+                        <th>Restock</th>
+                      </tr>
+                    </thead>
+                    <tbody id="dash-lowstock-tbody">
+                      <!-- Rendered dynamically -->
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==================================================================
+             SECTION 2: PRODUCT MANAGEMENT
+             ================================================================== -->
+        <section class="admin-section" id="section-products">
+          <div class="section-toolbar">
+            <div class="toolbar-left">
+              <!-- Search -->
+              <div class="search-input-wrap">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                <input type="text" id="prod-search-input" class="toolbar-search" placeholder="Search by name, ID, category...">
+              </div>
+
+              <!-- Category Filter -->
+              <select id="prod-category-filter" class="toolbar-select">
+                <option value="all">All Categories</option>
+                <option value="Koi Fish">Koi Fish</option>
+                <option value="Goldfish">Goldfish</option>
+                <option value="Guppy">Guppy</option>
+                <option value="Betta">Betta</option>
+                <option value="Molly">Molly</option>
+                <option value="Angelfish">Angelfish</option>
+                <option value="Tetra">Tetra</option>
+              </select>
+
+              <!-- Stock Filter -->
+              <select id="prod-stock-filter" class="toolbar-select">
+                <option value="all">All Stock Levels</option>
+                <option value="instock">In Stock (&gt; 0)</option>
+                <option value="lowstock">Low Stock (&lt; 5)</option>
+                <option value="outofstock">Out of Stock (0)</option>
+              </select>
+
+              <!-- Sort -->
+              <select id="prod-sort-filter" class="toolbar-select">
+                <option value="name-asc">Sort: Name (A-Z)</option>
+                <option value="price-asc">Price: Low to High</option>
+                <option value="price-desc">Price: High to Low</option>
+                <option value="stock-asc">Stock: Low to High</option>
+                <option value="stock-desc">Stock: High to Low</option>
+                <option value="rating-desc">Rating: Highest</option>
+              </select>
+            </div>
+
+            <div class="toolbar-right">
+              <span class="catalog-count-pill" id="prod-filtered-count">Showing 20 fish</span>
+              <button class="btn btn-primary" id="btn-add-product">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                <span>Add New Fish</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Products Table -->
+          <div class="admin-card" style="padding: 0;">
+            <div class="table-responsive">
+              <table class="admin-table" id="products-table">
+                <thead>
+                  <tr>
+                    <th style="width: 60px;">Image</th>
+                    <th>Product Name & ID</th>
+                    <th>Category</th>
+                    <th>Price</th>
+                    <th style="text-align: center;">Stock Qty</th>
+                    <th>Availability</th>
+                    <th style="text-align: right;">Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="products-tbody">
+                  <!-- Populated dynamically -->
+                </tbody>
+              </table>
+            </div>
+
+            <!-- Empty Table Message -->
+            <div id="products-empty-message" class="table-empty-state" style="display: none;">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+              <h3>No products found</h3>
+              <p>Try modifying your search query or category filters.</p>
+              <button class="btn btn-secondary btn-sm" id="btn-clear-prod-filters">Reset All Filters</button>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==================================================================
+             SECTION 3: ORDER MANAGEMENT
+             ================================================================== -->
+        <section class="admin-section" id="section-orders">
+          <div class="section-toolbar">
+            <div class="toolbar-left">
+              <div class="search-input-wrap">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                <input type="text" id="order-search-input" class="toolbar-search" placeholder="Search by Order ID, customer, city...">
+              </div>
+
+              <select id="order-status-filter" class="toolbar-select">
+                <option value="all">All Statuses</option>
+                <option value="Pending">Pending</option>
+                <option value="Confirmed">Confirmed</option>
+                <option value="Packed">Packed</option>
+                <option value="Shipped">Shipped</option>
+                <option value="Delivered">Delivered</option>
+                <option value="Cancelled">Cancelled</option>
+              </select>
+            </div>
+
+            <div class="toolbar-right">
+              <span class="catalog-count-pill" id="orders-filtered-count">0 Orders</span>
+              <button class="btn btn-secondary btn-sm" id="btn-seed-orders">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"></polyline><polyline points="1 20 1 14 7 14"></polyline><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg>
+                Load Sample Orders
+              </button>
+            </div>
+          </div>
+
+          <!-- Orders Table -->
+          <div class="admin-card" style="padding: 0;">
+            <div class="table-responsive">
+              <table class="admin-table" id="orders-table">
+                <thead>
+                  <tr>
+                    <th>Order ID</th>
+                    <th>Customer Name</th>
+                    <th>Date</th>
+                    <th>Products Ordered</th>
+                    <th>Amount</th>
+                    <th>Payment Method</th>
+                    <th>Status</th>
+                    <th style="text-align: right;">Action</th>
+                  </tr>
+                </thead>
+                <tbody id="orders-tbody">
+                  <!-- Populated dynamically -->
+                </tbody>
+              </table>
+            </div>
+
+            <!-- Empty Orders Message -->
+            <div id="orders-empty-message" class="table-empty-state" style="display: none;">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+              <h3>No orders yet</h3>
+              <p>Orders submitted by customers during checkout will appear here in real time.</p>
+              <button class="btn btn-primary btn-sm" id="btn-create-sample-order">Generate Sample Test Order</button>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==================================================================
+             SECTION 4: LOW STOCK MANAGEMENT
+             ================================================================== -->
+        <section class="admin-section" id="section-lowstock">
+          <!-- Low Stock Warning Banner -->
+          <div class="low-stock-alert-banner">
+            <div class="alert-banner-icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+            </div>
+            <div class="alert-banner-content">
+              <h3>Low Stock Inventory Warning (&lt; 5 Units)</h3>
+              <p>
+                The following fish varieties have inventory levels below our safe dispatch threshold of 5 units. Replenish immediately to ensure smooth customer order fulfillment and prevent backorders.
+              </p>
+            </div>
+          </div>
+
+          <div class="admin-card" style="padding: 0;">
+            <div class="table-responsive">
+              <table class="admin-table">
+                <thead>
+                  <tr>
+                    <th style="width: 60px;">Image</th>
+                    <th>Product Name & ID</th>
+                    <th>Category</th>
+                    <th>Price</th>
+                    <th style="text-align: center;">Current Stock</th>
+                    <th>Status</th>
+                    <th style="text-align: right;">Quick Restock</th>
+                  </tr>
+                </thead>
+                <tbody id="lowstock-tbody">
+                  <!-- Populated dynamically -->
+                </tbody>
+              </table>
+            </div>
+
+            <div id="lowstock-empty-message" class="table-empty-state" style="display: none;">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--emerald-400)" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+              <h3 style="color: var(--emerald-400);">All Stock Levels Healthy!</h3>
+              <p>Every single fish species currently has 5 or more units in inventory.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==================================================================
+             SECTION 5: SALES ANALYTICS
+             ================================================================== -->
+        <section class="admin-section" id="section-sales">
+          <!-- Sales Metric Cards -->
+          <div class="metrics-grid">
+            <div class="metric-card">
+              <div class="metric-icon metric-icon-cyan">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+              </div>
+              <div class="metric-info">
+                <span class="metric-label">Gross Revenue</span>
+                <strong class="metric-value text-cyan" id="sales-gross-revenue">₹0</strong>
+                <span class="metric-sub">Calculated from confirmed orders</span>
+              </div>
+            </div>
+
+            <div class="metric-card">
+              <div class="metric-icon metric-icon-blue">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+              </div>
+              <div class="metric-info">
+                <span class="metric-label">Completed Orders</span>
+                <strong class="metric-value" id="sales-order-count">0</strong>
+                <span class="metric-sub">Active & fulfilled</span>
+              </div>
+            </div>
+
+            <div class="metric-card">
+              <div class="metric-icon metric-icon-purple">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+              </div>
+              <div class="metric-info">
+                <span class="metric-label">Average Order Value</span>
+                <strong class="metric-value text-emerald" id="sales-aov">₹0</strong>
+                <span class="metric-sub">Revenue / orders</span>
+              </div>
+            </div>
+
+            <div class="metric-card">
+              <div class="metric-icon metric-icon-emerald">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 16s4-3 10-3 10 3 10 3-4-8-10-8-10 8-10 8z"></path><circle cx="12" cy="13" r="1.5"></circle></svg>
+              </div>
+              <div class="metric-info">
+                <span class="metric-label">Live Fish Dispatched</span>
+                <strong class="metric-value" id="sales-units-sold">0</strong>
+                <span class="metric-sub">Total livestock specimens</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Sales Chart Section -->
+          <div class="admin-card" style="margin-top: 1.5rem;">
+            <div class="card-header">
+              <div>
+                <h2 class="card-title">Category Revenue Breakdown</h2>
+                <p class="card-subtitle">Pure vanilla CSS/JavaScript visualization &bull; Zero external chart dependencies</p>
+              </div>
+              <div class="chart-legend-row" id="sales-chart-legend">
+                <!-- Dynamically populated -->
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="full-sales-chart-wrap" id="sales-analytics-chart">
+                <!-- Dynamically populated -->
+              </div>
+            </div>
+          </div>
+
+          <!-- Best Sellers Leaderboard Table -->
+          <div class="admin-card" style="margin-top: 1.5rem; padding: 0;">
+            <div class="card-header" style="padding: 1.25rem 1.5rem; border-bottom: 1px solid rgba(255, 255, 255, 0.08);">
+              <div>
+                <h2 class="card-title">Best-Selling Fish Species Leaderboard</h2>
+                <p class="card-subtitle">Sorted by units ordered across all customer shipments</p>
+              </div>
+            </div>
+            <div class="table-responsive">
+              <table class="admin-table">
+                <thead>
+                  <tr>
+                    <th style="width: 40px;">Rank</th>
+                    <th style="width: 60px;">Image</th>
+                    <th>Species & Category</th>
+                    <th>Unit Price</th>
+                    <th style="text-align: center;">Units Sold</th>
+                    <th style="text-align: right;">Gross Generated</th>
+                    <th style="text-align: center;">Stock Status</th>
+                  </tr>
+                </thead>
+                <tbody id="sales-bestsellers-tbody">
+                  <!-- Populated dynamically -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==================================================================
+             SECTION 6: CUSTOMERS (Coming Soon)
+             ================================================================== -->
+        <section class="admin-section" id="section-customers">
+          <div class="coming-soon-card">
+            <div class="coming-soon-icon">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+            </div>
+            <span class="coming-soon-badge">Phase 2 Module &bull; Coming Soon</span>
+            <h2 class="coming-soon-title">Customer Relationship Management (CRM)</h2>
+            <p class="coming-soon-desc">
+              Advanced customer profiles, purchase history timelines, WhatsApp dispatch alerts, VIP loyalty rewards, and repeat customer lifetime value tracking are actively in development.
+            </p>
+            <div class="coming-soon-preview-grid">
+              <div class="preview-mini-card">
+                <span class="mini-label">Total Registered</span>
+                <strong class="mini-val">142 Clients</strong>
+              </div>
+              <div class="preview-mini-card">
+                <span class="mini-label">Repeat Rate</span>
+                <strong class="mini-val">38.4%</strong>
+              </div>
+              <div class="preview-mini-card">
+                <span class="mini-label">Top Location</span>
+                <strong class="mini-val">Bengaluru NCR</strong>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==================================================================
+             SECTION 7: SETTINGS & DATA TOOLS
+             ================================================================== -->
+        <section class="admin-section" id="section-settings">
+          <div class="settings-grid">
+            <!-- Store Configuration -->
+            <div class="admin-card">
+              <h2 class="card-title" style="margin-bottom: 0.25rem;">Store Parameters</h2>
+              <p class="card-subtitle" style="margin-bottom: 1.5rem;">Current operational rules & shipping policy</p>
+
+              <div class="settings-form-group">
+                <label class="setting-label">Store Brand Name</label>
+                <input type="text" class="setting-input" value="AquaNest Aquatic Technologies" readonly>
+              </div>
+
+              <div class="settings-form-group">
+                <label class="setting-label">Catalog Currency</label>
+                <input type="text" class="setting-input" value="Indian Rupee (INR - ₹)" readonly>
+              </div>
+
+              <div class="settings-form-group">
+                <label class="setting-label">Free Express Shipping Threshold</label>
+                <input type="text" class="setting-input" value="₹999.00 (Orders above qualify for Free Shipping)" readonly>
+              </div>
+
+              <div class="settings-form-group">
+                <label class="setting-label">Standard Oxygen Packing Fee</label>
+                <input type="text" class="setting-input" value="₹99.00" readonly>
+              </div>
+            </div>
+
+            <!-- Data & Catalog Maintenance Tools -->
+            <div class="admin-card">
+              <h2 class="card-title" style="margin-bottom: 0.25rem;">Data & Catalog Maintenance</h2>
+              <p class="card-subtitle" style="margin-bottom: 1.5rem;">Manage localStorage databases for testing and reset</p>
+
+              <div class="data-tools-list">
+                <div class="data-tool-item">
+                  <div>
+                    <h4 class="data-tool-title">Reset to Default Species Catalog</h4>
+                    <p class="data-tool-desc">Restore the original 20 species catalog with standard prices, specifications, and images.</p>
+                  </div>
+                  <button class="btn btn-secondary btn-sm" id="btn-reset-default-catalog">Reset Catalog</button>
+                </div>
+
+                <div class="data-tool-item">
+                  <div>
+                    <h4 class="data-tool-title">Seed Realistic Demo Orders</h4>
+                    <p class="data-tool-desc">Load sample historical orders to test order management, status updates, and sales analytics.</p>
+                  </div>
+                  <button class="btn btn-secondary btn-sm" id="btn-seed-demo-orders-settings">Load Orders</button>
+                </div>
+
+                <div class="data-tool-item">
+                  <div>
+                    <h4 class="data-tool-title" style="color: var(--coral-400);">Clear All Order Records</h4>
+                    <p class="data-tool-desc">Delete all stored orders from localStorage. Catalog products remain untouched.</p>
+                  </div>
+                  <button class="btn btn-outline btn-sm" id="btn-clear-all-orders" style="border-color: rgba(255, 90, 95, 0.4); color: var(--coral-400);">Clear Orders</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       MODAL: ADD / EDIT PRODUCT (17 REQUIRED FIELDS)
+       ======================================================================== -->
+  <div class="admin-modal-overlay" id="product-modal">
+    <div class="admin-modal-card admin-modal-lg">
+      <div class="admin-modal-header">
+        <div>
+          <h2 class="admin-modal-title" id="product-modal-title">Add New Fish Specimen</h2>
+          <p class="admin-modal-desc" id="product-modal-desc">Configure all specifications and pricing for this aquatic product.</p>
+        </div>
+        <button class="modal-close-x" id="product-modal-close" aria-label="Close modal">&times;</button>
+      </div>
+
+      <form id="product-form" novalidate>
+        <input type="hidden" id="form-is-edit" value="false">
+        <input type="hidden" id="form-original-id" value="">
+
+        <div class="form-tabs-content">
+          <!-- Group 1: Identity & Categorization -->
+          <div class="form-fieldset-box">
+            <h3 class="fieldset-heading">1. Identity & Categorization</h3>
+            <div class="form-grid-3">
+              <div class="admin-form-group">
+                <label for="form-prod-name" class="admin-label">Fish Species Name *</label>
+                <input type="text" id="form-prod-name" class="admin-input" placeholder="e.g. Royal Blue Halfmoon Betta" required>
+                <span class="admin-form-err" id="err-prod-name"></span>
+              </div>
+
+              <div class="admin-form-group">
+                <label for="form-prod-id" class="admin-label">Product ID (Slug) *</label>
+                <input type="text" id="form-prod-id" class="admin-input" placeholder="e.g. betta-royal-blue" required>
+                <span class="admin-form-err" id="err-prod-id"></span>
+              </div>
+
+              <div class="admin-form-group">
+                <label for="form-prod-category" class="admin-label">Species Category *</label>
+                <select id="form-prod-category" class="admin-select" required>
+                  <option value="Koi Fish">Koi Fish</option>
+                  <option value="Goldfish">Goldfish</option>
+                  <option value="Guppy">Guppy</option>
+                  <option value="Betta">Betta</option>
+                  <option value="Molly">Molly</option>
+                  <option value="Angelfish">Angelfish</option>
+                  <option value="Tetra">Tetra</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- Group 2: Pricing, Inventory & Availability -->
+          <div class="form-fieldset-box">
+            <h3 class="fieldset-heading">2. Pricing, Inventory & Badges</h3>
+            <div class="form-grid-4">
+              <div class="admin-form-group">
+                <label for="form-prod-price" class="admin-label">Selling Price (₹) *</label>
+                <input type="number" id="form-prod-price" class="admin-input" min="1" placeholder="e.g. 420" required>
+                <span class="admin-form-err" id="err-prod-price"></span>
+              </div>
+
+              <div class="admin-form-group">
+                <label for="form-prod-oldprice" class="admin-label">Original Price (₹)</label>
+                <input type="number" id="form-prod-oldprice" class="admin-input" min="0" placeholder="e.g. 550 (Optional)">
+              </div>
+
+              <div class="admin-form-group">
+                <label for="form-prod-stock" class="admin-label">Stock Quantity *</label>
+                <input type="number" id="form-prod-stock" class="admin-input" min="0" placeholder="e.g. 15" required>
+                <span class="admin-form-err" id="err-prod-stock"></span>
+              </div>
+
+              <div class="admin-form-group">
+                <label for="form-prod-rating" class="admin-label">Initial Rating (1.0 – 5.0)</label>
+                <input type="number" id="form-prod-rating" class="admin-input" step="0.1" min="1" max="5" value="4.8">
+              </div>
+            </div>
+
+            <!-- Stock status toggle & feature flags -->
+            <div class="form-checkboxes-row">
+              <label class="admin-toggle-label">
+                <input type="checkbox" id="form-prod-instock" checked>
+                <span>Mark as Available / In Stock</span>
+              </label>
+              <label class="admin-toggle-label">
+                <input type="checkbox" id="form-prod-bestseller">
+                <span>Bestseller Badge</span>
+              </label>
+              <label class="admin-toggle-label">
+                <input type="checkbox" id="form-prod-trending">
+                <span>Trending Badge</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Group 3: Image -->
+          <div class="form-fieldset-box">
+            <h3 class="fieldset-heading">3. Visual Presentation</h3>
+            <div style="display: flex; gap: 1.25rem; align-items: center; flex-wrap: wrap;">
+              <div class="img-preview-box" id="form-img-preview-box">
+                <img id="form-img-preview" src="images/koi-kohaku.jpg" alt="Preview">
+              </div>
+              <div style="flex-grow: 1; min-width: 250px;">
+                <label for="form-prod-image" class="admin-label">Image Path or URL *</label>
+                <input type="text" id="form-prod-image" class="admin-input" placeholder="e.g. images/koi-kohaku.jpg or https://..." required>
+                <small style="color: var(--slate-400); font-size: 0.78rem; display: block; margin-top: 0.35rem;">
+                  Use existing local images (e.g. images/koi-kohaku.jpg, images/betta-crowntail.jpg) or valid image URLs.
+                </small>
+                <span class="admin-form-err" id="err-prod-image"></span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Group 4: Descriptions -->
+          <div class="form-fieldset-box">
+            <h3 class="fieldset-heading">4. Descriptions</h3>
+            <div class="admin-form-group">
+              <label for="form-prod-shortdesc" class="admin-label">Short Description (Catalog Cards) *</label>
+              <input type="text" id="form-prod-shortdesc" class="admin-input" placeholder="Crisp 1-2 sentence highlight for customer cards" required>
+              <span class="admin-form-err" id="err-prod-shortdesc"></span>
+            </div>
+
+            <div class="admin-form-group" style="margin-top: 1rem;">
+              <label for="form-prod-fulldesc" class="admin-label">Full Bio & Species Description *</label>
+              <textarea id="form-prod-fulldesc" class="admin-textarea" rows="3" placeholder="Comprehensive paragraph for product details page..." required></textarea>
+              <span class="admin-form-err" id="err-prod-fulldesc"></span>
+            </div>
+          </div>
+
+          <!-- Group 5: Aquarium Care Specifications (7 Required Parameters) -->
+          <div class="form-fieldset-box">
+            <h3 class="fieldset-heading">5. Aquarium Care Parameters</h3>
+            <div class="form-grid-3">
+              <div class="admin-form-group">
+                <label for="form-spec-tank" class="admin-label">Tank Size *</label>
+                <input type="text" id="form-spec-tank" class="admin-input" placeholder="e.g. 20+ Gallons" required>
+              </div>
+
+              <div class="admin-form-group">
+                <label for="form-spec-temp" class="admin-label">Water Temperature *</label>
+                <input type="text" id="form-spec-temp" class="admin-input" placeholder="e.g. 24°C – 28°C" required>
+              </div>
+
+              <div class="admin-form-group">
+                <label for="form-spec-ph" class="admin-label">pH Range *</label>
+                <input type="text" id="form-spec-ph" class="admin-input" placeholder="e.g. 6.5 – 7.5" required>
+              </div>
+            </div>
+
+            <div class="form-grid-4" style="margin-top: 1rem;">
+              <div class="admin-form-group">
+                <label for="form-spec-care" class="admin-label">Care Level *</label>
+                <select id="form-spec-care" class="admin-select" required>
+                  <option value="Beginner">Beginner</option>
+                  <option value="Intermediate">Intermediate</option>
+                  <option value="Expert">Expert</option>
+                </select>
+              </div>
+
+              <div class="admin-form-group">
+                <label for="form-spec-diet" class="admin-label">Diet *</label>
+                <input type="text" id="form-spec-diet" class="admin-input" placeholder="e.g. Carnivorous / Micro pellets" required>
+              </div>
+
+              <div class="admin-form-group">
+                <label for="form-spec-size" class="admin-label">Expected Adult Size *</label>
+                <input type="text" id="form-spec-size" class="admin-input" placeholder="e.g. 2.5 – 3.0 inches" required>
+              </div>
+
+              <div class="admin-form-group">
+                <label for="form-spec-lifespan" class="admin-label">Lifespan *</label>
+                <input type="text" id="form-spec-lifespan" class="admin-input" placeholder="e.g. 3 – 5 Years" required>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="admin-modal-footer">
+          <button type="button" class="btn btn-outline" id="product-modal-cancel">Cancel</button>
+          <button type="submit" class="btn btn-primary" id="btn-save-product">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <span id="btn-save-product-label">Save Product</span>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       MODAL: ORDER DETAILS
+       ======================================================================== -->
+  <div class="admin-modal-overlay" id="order-modal">
+    <div class="admin-modal-card admin-modal-md">
+      <div class="admin-modal-header">
+        <div>
+          <h2 class="admin-modal-title" id="order-modal-id">Order Details</h2>
+          <p class="admin-modal-desc" id="order-modal-date">Date placed</p>
+        </div>
+        <button class="modal-close-x" id="order-modal-close" aria-label="Close modal">&times;</button>
+      </div>
+
+      <div class="order-details-body" id="order-modal-content">
+        <!-- Rendered dynamically -->
+      </div>
+
+      <div class="admin-modal-footer">
+        <div style="display: flex; align-items: center; gap: 0.75rem; flex-grow: 1;">
+          <label style="font-size: 0.85rem; font-weight: 700; color: var(--slate-300);">Status:</label>
+          <select id="order-modal-status-select" class="admin-select" style="width: auto;">
+            <option value="Pending">Pending</option>
+            <option value="Confirmed">Confirmed</option>
+            <option value="Packed">Packed</option>
+            <option value="Shipped">Shipped</option>
+            <option value="Delivered">Delivered</option>
+            <option value="Cancelled">Cancelled</option>
+          </select>
+        </div>
+        <button type="button" class="btn btn-secondary" onclick="window.print();">Print Order</button>
+        <button type="button" class="btn btn-primary" id="order-modal-done">Done</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       MODAL: DELETE PRODUCT CONFIRMATION (Safety Against Accidental Deletion)
+       ======================================================================== -->
+  <div class="admin-modal-overlay" id="delete-modal">
+    <div class="admin-modal-card admin-modal-sm">
+      <div class="delete-icon-box">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+      </div>
+      <h2 class="delete-title">Delete Product?</h2>
+      <p class="delete-message">
+        Are you sure you want to delete <strong id="delete-prod-name" style="color: var(--white);">this product</strong>?
+      </p>
+      <p style="font-size: 0.82rem; color: var(--slate-400); margin-bottom: 1.5rem;">
+        This specimen will be completely removed from the live online store catalog and customer searches.
+      </p>
+
+      <div class="delete-actions-row">
+        <button type="button" class="btn btn-outline" id="btn-cancel-delete">Cancel</button>
+        <button type="button" class="btn btn-danger" id="btn-confirm-delete">
+          Yes, Delete Product
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div id="admin-toast-container" class="admin-toast-container"></div>
+
+  <!-- Core Scripts -->
+  <script src="js/config.js"></script>
+  <script src="js/products.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>

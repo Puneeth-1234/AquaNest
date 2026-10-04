@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shop Aquarium Fish | AquaNest Online Store</title>
+  <meta name="description" content="Browse our catalog of premium ornamental aquarium fish in India. Japanese Koi, Fancy Goldfish, Show-grade Bettas, Guppy trios, Angelfish & Tetras with live delivery.">
+  <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Plus Jakarta Sans', -apple-system, sans-serif; }
+  </style>
+</head>
+<body>
+  <div id="shop-page-marker"></div>
+
+  <!-- Announcement Bar -->
+  <div class="top-bar">
+    <div class="container">
+      <div class="top-bar-item">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        <span>100% Live Arrival & Health Guarantee Across India</span>
+      </div>
+      <div class="top-bar-item">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+        <span>Apply coupon <strong>AQUA10</strong> for 10% off</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Site Header -->
+  <header class="site-header">
+    <div class="container">
+      <nav class="navbar" aria-label="Main Navigation">
+        <a href="index.html" class="brand-logo" aria-label="AquaNest Homepage">
+          <div class="brand-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+              <path d="M2 16s4-3 10-3 10 3 10 3-4-8-10-8-10 8-10 8z"></path>
+              <circle cx="12" cy="13" r="1.5"></circle>
+            </svg>
+          </div>
+          <span class="brand-text">Aqua<span>Nest</span></span>
+        </a>
+
+        <ul class="nav-menu">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="shop.html" class="nav-link active">Shop</a></li>
+          <li><a href="index.html#featured-categories" class="nav-link">Categories</a></li>
+          <li><a href="index.html#aquarium-care" class="nav-link">About & Care</a></li>
+          <li><a href="contact.html" class="nav-link">Contact</a></li>
+        </ul>
+
+        <div class="nav-actions">
+          <a href="shop.html" class="action-btn" title="Search Fish" aria-label="Search Catalog">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+          </a>
+
+          <a href="shop.html?wishlist=true" class="action-btn" title="View Wishlist" aria-label="View Wishlist">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+            </svg>
+            <span class="badge-count wishlist-count-badge" style="display: none;">0</span>
+          </a>
+
+          <a href="cart.html" class="action-btn" title="Shopping Cart" aria-label="Shopping Cart">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="9" cy="21" r="1"></circle>
+              <circle cx="20" cy="21" r="1"></circle>
+              <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+            </svg>
+            <span class="badge-count cart-count-badge" style="display: none;">0</span>
+          </a>
+
+          <button class="mobile-toggle" aria-label="Toggle Navigation Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+      </nav>
+    </div>
+
+    <!-- Mobile Drawer -->
+    <div class="mobile-nav-drawer">
+      <a href="index.html" class="mobile-nav-link">Home</a>
+      <a href="shop.html" class="mobile-nav-link active">Shop Catalog</a>
+      <a href="index.html#featured-categories" class="mobile-nav-link">Fish Categories</a>
+      <a href="index.html#aquarium-care" class="mobile-nav-link">Aquarium Care Guide</a>
+      <a href="contact.html" class="mobile-nav-link">Contact & Support</a>
+      <a href="cart.html" class="mobile-nav-link">Shopping Cart</a>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- Breadcrumbs -->
+    <div class="breadcrumbs">
+      <a href="index.html">Home</a>
+      <span>/</span>
+      <span style="color: var(--cyan-400);">Fish Catalog & Shop</span>
+    </div>
+
+    <!-- Mobile Filter Action Bar & Category Quick Scroller (Visible on mobile/tablet) -->
+    <div class="mobile-filter-bar">
+      <button type="button" id="open-filter-drawer-btn" class="mobile-filter-btn" aria-label="Open Filter Drawer">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon>
+        </svg>
+        <span>Filters</span>
+        <span id="mobile-filter-badge" class="filter-count-badge" style="display: none;">0</span>
+      </button>
+
+      <div class="mobile-quick-cats" id="mobile-quick-cats" role="tablist" aria-label="Quick Category Filter">
+        <button type="button" class="mobile-cat-pill active" data-category="all">All</button>
+        <button type="button" class="mobile-cat-pill" data-category="koi-fish">Koi</button>
+        <button type="button" class="mobile-cat-pill" data-category="goldfish">Goldfish</button>
+        <button type="button" class="mobile-cat-pill" data-category="guppy">Guppy</button>
+        <button type="button" class="mobile-cat-pill" data-category="betta">Betta</button>
+        <button type="button" class="mobile-cat-pill" data-category="molly">Molly</button>
+        <button type="button" class="mobile-cat-pill" data-category="angelfish">Angelfish</button>
+        <button type="button" class="mobile-cat-pill" data-category="tetra">Tetra</button>
+      </div>
+    </div>
+
+    <div class="shop-layout">
+      <!-- Left Filters Sidebar (Desktop) -->
+      <aside class="filter-sidebar" id="desktop-filter-sidebar">
+        <!-- Sidebar Header with Clear All Button -->
+        <div class="filter-sidebar-header">
+          <div class="filter-sidebar-title">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon>
+            </svg>
+            <span>Filters</span>
+          </div>
+          <button type="button" id="clear-all-filters-btn" class="clear-filters-link" title="Clear all applied filters">
+            Clear All
+          </button>
+        </div>
+
+        <!-- Category Filter -->
+        <div class="filter-block">
+          <h3 class="filter-title">Categories</h3>
+          <div class="category-filter-list">
+            <button type="button" class="filter-pill-btn category-filter-btn active" data-category="all">
+              <span>All Species</span>
+              <span class="filter-count" id="count-all">20</span>
+            </button>
+            <button type="button" class="filter-pill-btn category-filter-btn" data-category="koi-fish">
+              <span>Koi Fish</span>
+              <span class="filter-count" id="count-koi-fish">3</span>
+            </button>
+            <button type="button" class="filter-pill-btn category-filter-btn" data-category="goldfish">
+              <span>Goldfish</span>
+              <span class="filter-count" id="count-goldfish">3</span>
+            </button>
+            <button type="button" class="filter-pill-btn category-filter-btn" data-category="guppy">
+              <span>Guppy</span>
+              <span class="filter-count" id="count-guppy">3</span>
+            </button>
+            <button type="button" class="filter-pill-btn category-filter-btn" data-category="betta">
+              <span>Betta</span>
+              <span class="filter-count" id="count-betta">4</span>
+            </button>
+            <button type="button" class="filter-pill-btn category-filter-btn" data-category="molly">
+              <span>Molly</span>
+              <span class="filter-count" id="count-molly">2</span>
+            </button>
+            <button type="button" class="filter-pill-btn category-filter-btn" data-category="angelfish">
+              <span>Angelfish</span>
+              <span class="filter-count" id="count-angelfish">3</span>
+            </button>
+            <button type="button" class="filter-pill-btn category-filter-btn" data-category="tetra">
+              <span>Tetra</span>
+              <span class="filter-count" id="count-tetra">3</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- In-Stock Filter -->
+        <div class="filter-block">
+          <h3 class="filter-title">Availability</h3>
+          <label class="instock-checkbox-label" for="instock-checkbox">
+            <input type="checkbox" id="instock-checkbox" class="custom-checkbox">
+            <span class="custom-checkbox-indicator">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+            </span>
+            <span class="instock-label-text">In Stock Only</span>
+            <span class="filter-count" id="instock-count">19</span>
+          </label>
+        </div>
+
+        <!-- Price Range Filter -->
+        <div class="filter-block">
+          <div class="filter-title-row">
+            <h3 class="filter-title" style="margin-bottom: 0;">Price Range</h3>
+            <span id="max-price-display" class="price-indicator">₹2,500</span>
+          </div>
+          <div class="price-slider-wrapper" style="margin-top: 0.85rem;">
+            <input type="range" id="price-range-slider" class="price-slider" min="150" max="2500" step="50" value="2500" aria-label="Filter by maximum price">
+            <div class="price-display">
+              <span>₹150</span>
+              <span>₹2,500</span>
+            </div>
+          </div>
+          <!-- Quick Price Preset Pills -->
+          <div class="price-presets" id="price-presets">
+            <button type="button" class="price-preset-btn active" data-preset="all">All</button>
+            <button type="button" class="price-preset-btn" data-preset="under-500">&lt; ₹500</button>
+            <button type="button" class="price-preset-btn" data-preset="500-1000">₹500 - ₹1k</button>
+            <button type="button" class="price-preset-btn" data-preset="over-1000">&gt; ₹1k</button>
+          </div>
+        </div>
+
+        <!-- Safety Assurance Card -->
+        <div class="safety-card" style="background: rgba(0, 210, 255, 0.06); border: 1px solid rgba(0, 210, 255, 0.15); border-radius: var(--radius-sm); padding: 1.15rem; margin-bottom: 1.25rem;">
+          <h4 style="font-size: 0.92rem; color: var(--cyan-300); margin-bottom: 0.35rem; display: flex; align-items: center; gap: 0.4rem;">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            Live Arrival Warranty
+          </h4>
+          <p style="font-size: 0.78rem; color: var(--slate-300); line-height: 1.45; margin: 0;">
+            100% Live Arrival Guarantee in medical-grade oxygenated breather bags with thermoregulated crates.
+          </p>
+        </div>
+
+        <!-- Sidebar Reset Button -->
+        <button type="button" id="sidebar-reset-btn" class="sidebar-reset-btn">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path>
+            <path d="M3 3v5h5"></path>
+          </svg>
+          <span>Reset All Filters</span>
+        </button>
+      </aside>
+
+      <!-- Main Products View -->
+      <section class="shop-main-content">
+        <!-- Shop Search & Sort Controls -->
+        <div class="shop-controls">
+          <div class="search-input-box">
+            <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            <input type="text" id="shop-search-input" placeholder="Search by fish name or variety..." autocomplete="off">
+            <button type="button" id="search-clear-btn" class="search-clear-btn" aria-label="Clear search" style="display: none;">&times;</button>
+          </div>
+
+          <div class="shop-controls-right">
+            <!-- Product Count -->
+            <div id="results-count" class="results-count-text">
+              Showing <strong id="visible-count">20</strong> of <strong id="total-count">20</strong> fishes
+            </div>
+            
+            <!-- Sort By Select -->
+            <div class="sort-select-box">
+              <label for="shop-sort-select">Sort By:</label>
+              <select id="shop-sort-select" class="sort-select" aria-label="Sort products">
+                <option value="featured">Featured / Default</option>
+                <option value="popularity">Popularity (Most Reviewed)</option>
+                <option value="price-low">Price: Low to High</option>
+                <option value="price-high">Price: High to Low</option>
+                <option value="rating">Highest Customer Rating</option>
+                <option value="name">Species Name: A to Z</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- Active Filter Tags / Chips -->
+        <div id="active-filters-bar" class="active-filters-bar" style="display: none;">
+          <span class="active-filters-label">Active Filters:</span>
+          <div id="active-filter-chips" class="active-filter-chips"></div>
+          <button type="button" id="chips-clear-all-btn" class="chips-clear-all" title="Clear all active filters">Clear All</button>
+        </div>
+
+        <!-- Products Grid Container -->
+        <div class="products-grid" id="shop-products-grid">
+          <!-- Dynamically populated by script.js -->
+        </div>
+      </section>
+    </div>
+
+    <!-- Mobile Filter Slide-over Drawer & Backdrop -->
+    <div id="mobile-filter-backdrop" class="mobile-drawer-backdrop" aria-hidden="true"></div>
+    <aside id="mobile-filter-drawer" class="mobile-filter-drawer" aria-label="Mobile Filters" aria-hidden="true">
+      <div class="mobile-drawer-header">
+        <div class="mobile-drawer-title">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon>
+          </svg>
+          <span>Filter Fishes</span>
+        </div>
+        <button type="button" id="close-filter-drawer-btn" class="mobile-drawer-close" aria-label="Close Filter Drawer">&times;</button>
+      </div>
+      
+      <div class="mobile-drawer-body">
+        <!-- Search inside drawer -->
+        <div class="mobile-drawer-section">
+          <label class="mobile-section-label" for="mobile-search-input">Search Fish</label>
+          <div class="search-input-box" style="max-width: 100%;">
+            <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            <input type="text" id="mobile-search-input" placeholder="Search by fish name...">
+            <button type="button" id="mobile-search-clear-btn" class="search-clear-btn" style="display: none;">&times;</button>
+          </div>
+        </div>
+
+        <!-- Category in drawer -->
+        <div class="mobile-drawer-section">
+          <label class="mobile-section-label">Category</label>
+          <div class="mobile-category-list" id="mobile-drawer-categories">
+            <!-- Dynamically cloned or synced -->
+          </div>
+        </div>
+
+        <!-- In-Stock in drawer -->
+        <div class="mobile-drawer-section">
+          <label class="mobile-section-label">Availability</label>
+          <label class="instock-checkbox-label" for="mobile-instock-checkbox">
+            <input type="checkbox" id="mobile-instock-checkbox" class="custom-checkbox">
+            <span class="custom-checkbox-indicator">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+            </span>
+            <span class="instock-label-text">In Stock Only</span>
+            <span class="filter-count" id="mobile-instock-count">19</span>
+          </label>
+        </div>
+
+        <!-- Price in drawer -->
+        <div class="mobile-drawer-section">
+          <div class="filter-title-row">
+            <label class="mobile-section-label" style="margin-bottom: 0;">Max Price</label>
+            <span id="mobile-max-price-display" class="price-indicator">₹2,500</span>
+          </div>
+          <div class="price-slider-wrapper" style="margin-top: 0.85rem;">
+            <input type="range" id="mobile-price-slider" class="price-slider" min="150" max="2500" step="50" value="2500" aria-label="Mobile max price">
+            <div class="price-display">
+              <span>₹150</span>
+              <span>₹2,500</span>
+            </div>
+          </div>
+          <div class="price-presets" id="mobile-price-presets" style="margin-top: 0.75rem;">
+            <button type="button" class="price-preset-btn active" data-preset="all">All</button>
+            <button type="button" class="price-preset-btn" data-preset="under-500">&lt; ₹500</button>
+            <button type="button" class="price-preset-btn" data-preset="500-1000">₹500 - ₹1k</button>
+            <button type="button" class="price-preset-btn" data-preset="over-1000">&gt; ₹1k</button>
+          </div>
+        </div>
+
+        <!-- Sort in drawer -->
+        <div class="mobile-drawer-section">
+          <label class="mobile-section-label" for="mobile-sort-select">Sort By</label>
+          <select id="mobile-sort-select" class="sort-select" style="width: 100%;">
+            <option value="featured">Featured / Default</option>
+            <option value="popularity">Popularity (Most Reviewed)</option>
+            <option value="price-low">Price: Low to High</option>
+            <option value="price-high">Price: High to Low</option>
+            <option value="rating">Highest Customer Rating</option>
+            <option value="name">Species Name: A to Z</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="mobile-drawer-footer">
+        <button type="button" id="mobile-drawer-reset-btn" class="btn btn-outline btn-sm" style="flex: 1;">Clear All</button>
+        <button type="button" id="mobile-drawer-apply-btn" class="btn btn-primary btn-sm" style="flex: 1.5;">Apply Filters</button>
+      </div>
+    </aside>
+  </main>
+
+  <!-- Global Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <a href="index.html" class="brand-logo">
+            <div class="brand-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                <path d="M2 16s4-3 10-3 10 3 10 3-4-8-10-8-10 8-10 8z"></path>
+                <circle cx="12" cy="13" r="1.5"></circle>
+              </svg>
+            </div>
+            <span class="brand-text">Aqua<span>Nest</span></span>
+          </a>
+          <p class="footer-brand-desc">
+            AquaNest delivers premium, quarantined ornamental fish across India in specialized temperature-controlled habitats.
+          </p>
+        </div>
+
+        <div>
+          <h4 class="footer-heading">Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="shop.html">Shop Catalog</a></li>
+            <li><a href="cart.html">View Cart</a></li>
+            <li><a href="checkout.html">Checkout</a></li>
+            <li><a href="contact.html">Customer Care</a></li>
+            <li><a href="admin.html" style="color: var(--cyan-400);">Admin Portal</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-heading">Species</h4>
+          <ul class="footer-links">
+            <li><a href="shop.html?category=koi-fish">Koi Fish</a></li>
+            <li><a href="shop.html?category=goldfish">Fancy Goldfish</a></li>
+            <li><a href="shop.html?category=betta">Exotic Bettas</a></li>
+            <li><a href="shop.html?category=tetra">Schooling Tetras</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-heading">Live Arrival Care</h4>
+          <p style="font-size: 0.88rem; color: var(--slate-300); margin-bottom: 0.85rem;">
+            In the rare event of a transit casualty, photograph unopened bags within 2 hours of delivery for an instant replacement or refund.
+          </p>
+          <span style="font-size: 0.88rem; color: var(--cyan-400); font-weight: 700;">WhatsApp Support: +91 98765 43210</span>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>&copy; 2026 AquaNest Aquatic Technologies Pvt. Ltd. All rights reserved.</div>
+        <div class="payment-badges">
+          <span class="pay-badge">UPI / GPay</span>
+          <span class="pay-badge">PhonePe</span>
+          <span class="pay-badge">Net Banking</span>
+          <span class="pay-badge">COD Available</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/config.js"></script>
+  <script src="js/products.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/script.js"></script>
+</body>
+</html>

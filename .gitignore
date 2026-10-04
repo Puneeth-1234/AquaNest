@@ -1,0 +1,47 @@
+# Dependency directories
+node_modules/
+backend/node_modules/
+
+# Environment files (CRITICAL: Never commit secrets or credentials)
+.env
+.env.*
+!.env.example
+backend/.env
+backend/.env.*
+!backend/.env.example
+*.env
+*.env.local
+*.env.development
+*.env.production
+
+# Logs & Debug Output
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Runtime data & temporary files
+pids/
+*.pid
+*.seed
+*.pid.lock
+*.tmp
+*.temp
+scratch/
+.system_generated/
+
+# OS metadata & Editor configuration
+.DS_Store
+.DS_Store?
+._*
+Thumbs.db
+ehthumbs.db
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+*.swp
+*.swo
+*~
